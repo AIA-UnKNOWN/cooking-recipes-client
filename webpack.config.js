@@ -23,6 +23,11 @@ const config = {
         use: "babel-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        include: resolve(__dirname, 'src'),
+      },
     ],
   },
   plugins: [
