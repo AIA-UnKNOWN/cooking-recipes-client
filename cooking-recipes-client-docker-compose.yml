@@ -1,0 +1,11 @@
+version: '2.6'
+services:
+  cooking-recipes-client:
+    image: cooking-recipes-client-image
+    ports:
+      - 3000:3000
+    environment:
+      - API_URL=http://localhost:9898
+    volumes:
+      - ./:/app
+      - ~/.ssh:/root/.ssh:ro
