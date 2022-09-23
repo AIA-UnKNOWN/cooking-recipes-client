@@ -19,6 +19,7 @@ const config = {
       '@env': resolve(__dirname, '.env.js'),
       '@components': resolve(__dirname, 'src', 'components'),
       '@pages': resolve(__dirname, 'src', 'pages'),
+      '@reducers': resolve(__dirname, 'src', 'reducers'),
     }
   },
   module: {
