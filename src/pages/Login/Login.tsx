@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
 
 import { Input } from '@components/form/components';
+import useLogin from './login.hook';
 
 const LoginPage = () => {
-  const [errors, setErrors] = useState(null);
+  const {
+    /* States */
+    errors,
+    setErrors,
+    /* Functions */
+    loginUser,
+    handleInputChange,
+  } = useLogin();
 
   return (
     <div className="w-screen h-screen flex justify-center items-center">
-      <form className='p-[20px] w-[300px] m-4 bg-white shadow-md shadow-[rgba(0, 0, 0, 0.25)]'>
+      <form
+        className='p-[20px] w-[300px] m-4 bg-white shadow-md shadow-[rgba(0, 0, 0, 0.25)]'
+        onSubmit={loginUser}
+      >
         {errors && (
           <div className={`
             h-[80px] bg-[#DAC3FF] text-white flex justify-center items-center text-[15px]
@@ -22,7 +33,7 @@ const LoginPage = () => {
             type="email"
             name="email"
             placeholder="Email"
-            onChange={e => console.log(e.target.value)}
+            onChange={handleInputChange}
           />
         </div>
         <div className='mb-[15px]'>
@@ -30,7 +41,7 @@ const LoginPage = () => {
             type="password"
             name="password"
             placeholder="Password"
-            onChange={e => console.log(e.target.value)}
+            onChange={handleInputChange}
           />
         </div>
 
