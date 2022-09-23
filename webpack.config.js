@@ -16,6 +16,7 @@ const config = {
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
+      '@env': resolve(__dirname, '.env.js'),
       '@components': resolve(__dirname, 'src', 'components'),
       '@pages': resolve(__dirname, 'src', 'pages'),
     }

@@ -11,5 +11,8 @@
     "isolatedModules": true,
     "esModuleInterop": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "path": {
+    "@components/*": "./src/components"
+  }
 }
