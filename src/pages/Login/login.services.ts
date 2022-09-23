@@ -4,15 +4,16 @@ import axios, {
 } from 'axios';
 
 import { API_URL } from '@env';
+import type { User } from '@reducers/user/user.types';
 
 const useLoginServices = () => {
 
-  const login = async (user) : AxiosResponse<any> => {
+  const login = async (user: User) : AxiosResponse<any> => {
     try {
-      const { status, ok, data: reponse } = await axios.post(`${API_URL}/auth/signin`, user)
-      return { status, ok, reponse };
+      const response = await axios.post(`${API_URL}/auth/signin`, user)
+      return response.data;
     } catch(error) {
-      return error;
+      return error.response;
     }
   }
 
