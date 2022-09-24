@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Swal from 'sweetalert2';
+import { useNavigate } from 'react-router-dom';
 
 import useLoginServices from './login.services';
 import { setUser } from '@reducers/user';
@@ -8,6 +9,7 @@ import { setUser } from '@reducers/user';
 const useLogin = () => {
   const { login } = useLoginServices();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [errors, setErrors] = useState(null);
   const [form, setForm] = useState({});
 
@@ -23,6 +25,7 @@ const useLogin = () => {
       showConfirmButton: false,
       timer: 1500
     });
+    navigate('/');
   }
 
   const handleInputChange = e => {
