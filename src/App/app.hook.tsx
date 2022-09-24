@@ -9,12 +9,16 @@ const useApp = () => {
   const user = useSelector(state => state.user.data);
 
   useEffect(() => {
+    checkIfAuthenticated();
+  }, [user]);
+
+  const checkIfAuthenticated = () : void => {
     if (hasUserData(user)) {
       navigate('/');
     } else {
       navigate('/signin');
     }
-  }, [user]);
+  }
 
   const hasUserData = (user: User) : boolean => Object.keys(user).length > 0;
 
