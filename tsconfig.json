@@ -9,10 +9,12 @@
     "allowJs": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "paths": {
+      "@components/*": ["./src/components/*"],
+      "@reducers/*": ["./src/reducers/*"],
+      "@pages/*": ["./src/pages/*"],
+    }
   },
-  "include": ["src"],
-  "path": {
-    "@components/*": "./src/components"
-  }
+  "include": ["src"]
 }
