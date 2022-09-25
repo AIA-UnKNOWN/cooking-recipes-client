@@ -2,7 +2,9 @@
 module.exports = {
   content: ['./src/**/*.tsx'],
   theme: {
-    extend: {},
+    extend: {
+      'primary': '#AC80F3',
+    },
     color: {
       'red': 'red',
     }
