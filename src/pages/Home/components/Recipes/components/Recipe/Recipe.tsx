@@ -5,7 +5,7 @@ import React from 'react';
 const Recipe = props => {
 
   return (
-    <div className='w-[300px] shadow-sm shadow-black mb-[15px]'>
+    <div className='w-[300px] shadow-sm shadow-gray-400 mb-[15px]'>
       <div>
         <video
           className='w-full'
