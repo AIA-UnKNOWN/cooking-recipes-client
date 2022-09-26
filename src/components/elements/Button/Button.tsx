@@ -5,6 +5,7 @@ const Button = props => {
     children,
     className,
     onClick,
+    icon,
   } = props;
 
   return (
@@ -14,6 +15,11 @@ const Button = props => {
       `}
       onClick={onClick}
     >
+      {icon && (
+        <span className='mr-3'>
+          <i className={icon} aria-hidden="true"></i>
+        </span>
+      )}
       {children}
     </button>
   );
