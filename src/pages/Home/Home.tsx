@@ -6,7 +6,9 @@ import Header from '@components/layouts/Header';
 import Recipes from './components/Recipes';
 
 const Home = props => {
-  useHome();
+  const {
+    onClickAddRecipe,
+  } = useHome();
 
   return (
     <div>
@@ -14,6 +16,7 @@ const Home = props => {
       <div className='flex justify-center items-center py-[25px]'>
         <Button
           icon="fa fa-plus"
+          onClick={onClickAddRecipe}
         >
           Add recipe
         </Button>        
