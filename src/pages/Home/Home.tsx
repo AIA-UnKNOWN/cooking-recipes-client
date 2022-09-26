@@ -12,7 +12,11 @@ const Home = props => {
     <div>
       <Header />
       <div className='flex justify-center items-center py-[25px]'>
-        <Button>Add recipe</Button>        
+        <Button
+          icon="fa fa-plus"
+        >
+          Add recipe
+        </Button>        
       </div>
       <Recipes />
     </div>
