@@ -13,16 +13,16 @@ const Recipe = props => {
       </div>
       <div className='p-[15px]'>
         <p className='text-[18px] pb-2 text-center font-bold'>Recipe Title</p>
-        <p className='text-[14px] pb-2 text-center'>
+        <p className='text-[14px] pb-4 text-center'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
           molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
           numquam blanditiis harum quisquam
         </p>
         <div className='flex flex-nowrap justify-between items-center'>
-          <Button className='text-[10px] h-[25px] w-[105px]'>
+          <Button className='text-[10px] w-[49%]'>
             Download
           </Button>
-          <Button className='text-[10px] h-[25px] w-[105px] bg-[#ffffff] text-[#AC80F3] border border-[#AC80F3]'>
+          <Button className='text-[10px] w-[49%] bg-[#ffffff] text-[#AC80F3] border border-[#AC80F3]'>
             Favorite
           </Button>
         </div>
