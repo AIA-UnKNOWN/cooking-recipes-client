@@ -6,9 +6,12 @@ const Recipe = props => {
 
   return (
     <div className='w-[300px] shadow-sm shadow-black mb-[15px]'>
-      <div className='border border-[#AC80F3]'>
-        <video>
-          <source src="" type="video/mp4" />
+      <div>
+        <video
+          className='w-full'
+          controls
+        >
+          <source src="/me.mp4" type="video/mp4" />
         </video>
       </div>
       <div className='p-[15px]'>
