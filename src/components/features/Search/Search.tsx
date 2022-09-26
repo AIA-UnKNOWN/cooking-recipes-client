@@ -5,7 +5,7 @@ const Search = props => {
 
   return (
     <Input
-      className="w-[280px] h-[30px]"
+      className="w-[280px] h-[40px]"
       name="search"
       placeholder="Search"
     />
