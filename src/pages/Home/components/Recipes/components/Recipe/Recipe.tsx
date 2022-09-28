@@ -3,6 +3,9 @@ import React from 'react';
  import { Button } from '@components/elements';
 
 const Recipe = props => {
+  const {
+    data,
+  } = props;
 
   return (
     <div className='w-[300px] shadow-sm shadow-gray-400 mb-[15px]'>
@@ -15,12 +18,8 @@ const Recipe = props => {
         </video>
       </div>
       <div className='p-[15px]'>
-        <p className='text-[18px] pb-2 text-center font-bold'>Recipe Title</p>
-        <p className='text-[14px] pb-4 text-center'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-          molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-          numquam blanditiis harum quisquam
-        </p>
+        <p className='text-[18px] pb-2 text-center font-bold'>{data.name}</p>
+        <p className='text-[14px] pb-4 text-center'>{data.description || 'No description provided'}</p>
         <div className='flex flex-nowrap justify-between items-center'>
           <Button
             icon="fa fa-cloud-download"
