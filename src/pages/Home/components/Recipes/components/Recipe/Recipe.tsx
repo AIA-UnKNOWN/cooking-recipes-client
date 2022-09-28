@@ -24,13 +24,13 @@ const Recipe = props => {
         <div className='flex flex-nowrap justify-between items-center'>
           <Button
             icon="fa fa-cloud-download"
-            className='text-[10px] w-[49%]'
+            className='text-[14px] w-[49%]'
           >
             Download
           </Button>
           <Button
             icon="fa fa-heart"
-            className='text-[10px] w-[49%] bg-[#ffffff] text-[#AC80F3] border border-[#AC80F3]'
+            className='text-[14px] w-[49%] bg-[#ffffff] text-[#AC80F3] border border-[#AC80F3]'
           >
             Favorite
           </Button>
