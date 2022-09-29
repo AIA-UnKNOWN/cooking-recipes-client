@@ -12,6 +12,7 @@ const config = {
   output: {
     path: resolve(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: '/',
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
@@ -55,6 +56,7 @@ if (isProd) {
     open: true,
     hot: true,
     compress: true,
+    historyApiFallback: true,
   };
 }
 
