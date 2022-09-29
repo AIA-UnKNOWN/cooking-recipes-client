@@ -1,5 +1,2 @@
-import Input from "./Input";
-
-export {
-  Input,
-}
+export { default as Input } from './Input';
+export { default as InputFile } from './InputFile';
