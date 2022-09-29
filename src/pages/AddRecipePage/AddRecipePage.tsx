@@ -1,7 +1,10 @@
 import React from 'react';
 
 import { Button } from '@components/elements';
-import { Input } from '@components/form/components';
+import {
+  Input,
+  InputFile,
+} from '@components/form/components';
 
 import useAddRecipePage from './addRecipePage.hook';
 
@@ -34,15 +37,17 @@ const AddRecipePage = props => {
           placeholder="Description"
           name="recipe-description"
         ></textarea>
-        <Input
+        <InputFile
           className='mb-[15px]'
-          type="file"
-          name="recipe-thumbnail"
+          label="Upload Thumbnail"
+          name='recipe-thumbnail'
+          onChange={e => console.log(e.target.name, e.target.files)}
         />
-        <Input
+        <InputFile
           className='mb-[15px]'
-          type="file"
-          name="recipe-video"
+          label="Upload Video"
+          name='recipe-video'
+          onChange={e => console.log(e.target.name, e.target.files)}
         />
         <Button
           className='w-[100%]'
