@@ -1,12 +1,13 @@
 import React from 'react';
 
+import { API_URL } from '@env';
  import { Button } from '@components/elements';
 
 const Recipe = props => {
   const {
     data,
   } = props;
-
+  
   return (
     <div className='w-[300px] shadow-sm shadow-gray-400 mb-[15px]'>
       <div>
@@ -14,7 +15,7 @@ const Recipe = props => {
           className='w-full'
           controls
         >
-          <source src="/me.mp4" type="video/mp4" />
+          <source src={`${API_URL}/${data?.Uploads[0]?.file_path}`} type={data?.Uploads[0]?.type} />
         </video>
       </div>
       <div className='p-[15px]'>
