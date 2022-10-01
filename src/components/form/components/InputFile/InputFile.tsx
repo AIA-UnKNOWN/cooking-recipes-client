@@ -1,9 +1,10 @@
 import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { Input } from '@components/form/components';
 
 const InputFile = props => {
-  const id = "crc-input-file";
+  const id = `crc-input-file-${uuidv4()}`;
   
   return (
     <div
