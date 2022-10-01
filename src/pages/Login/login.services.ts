@@ -22,11 +22,12 @@ const useLoginServices = () => {
     try {
       const response = await axios.post(`${API_URL}/auth/signin`, {}, {
         headers: {
-          'Authorization': authToken,
+          'Authorization': `Bearer ${authToken}`,
         }
       });
       return response.data;
     } catch(error) {
+      Cookies.remove('auth-token');
       return error.response;
     }
   }

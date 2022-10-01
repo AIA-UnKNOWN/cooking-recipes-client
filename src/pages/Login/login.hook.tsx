@@ -23,7 +23,7 @@ const useLogin = () => {
   }, []);
 
   const loginWithAuthToken = async () => {
-    const { statusText, message, data: user } = await loginWithToken(Cookies.get('auth-token'));
+    const { statusText, message, data: user } = Cookies.get('auth-token') && await loginWithToken(Cookies.get('auth-token'));
     saveUser(user);
     Swal.fire({
       position: 'center',
