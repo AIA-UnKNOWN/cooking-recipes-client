@@ -2,6 +2,7 @@ import axios, {
   /* Axios Types */
   AxiosResponse
 } from 'axios';
+import Cookies from 'js-cookie';
 
 import { API_URL } from '@env';
 import type { User } from '@reducers/user/user.types';
@@ -17,8 +18,22 @@ const useLoginServices = () => {
     }
   }
 
+  const loginWithToken = async (authToken: string) : AxiosResponse<any> => {
+    try {
+      const response = await axios.post(`${API_URL}/auth/signin`, {}, {
+        headers: {
+          'Authorization': authToken,
+        }
+      });
+      return response.data;
+    } catch(error) {
+      return error.response;
+    }
+  }
+
   return {
     login,
+    loginWithToken,
   }
 }
 
