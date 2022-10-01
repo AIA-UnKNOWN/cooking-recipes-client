@@ -10,7 +10,9 @@ import useAddRecipePage from './addRecipePage.hook';
 
 const AddRecipePage = props => {
   const {
-    goBack
+    /* Functions */
+    goBack,
+    addRecipe,
   } = useAddRecipePage(props);
 
   return (
@@ -22,11 +24,11 @@ const AddRecipePage = props => {
           Back
         </Button>
       </div>
-      <form>
+      <form onSubmit={addRecipe}>
         <Input
           className='mb-[15px]'
           placeholder="Title"
-          name="recipe-title"
+          name="name"
         />
         <textarea
           className={`
@@ -35,19 +37,19 @@ const AddRecipePage = props => {
             mb-[10px] p-2
           `}
           placeholder="Description"
-          name="recipe-description"
+          name="description"
         ></textarea>
         <InputFile
           className='mb-[15px]'
           label="Upload Thumbnail"
           name='recipe-thumbnail'
-          onChange={e => console.log(e.target.name, e.target.files)}
+          accept="image/*"
         />
         <InputFile
           className='mb-[15px]'
           label="Upload Video"
           name='recipe-video'
-          onChange={e => console.log(e.target.name, e.target.files)}
+          accept="video/*,.mkv"
         />
         <Button
           className='w-[100%]'
