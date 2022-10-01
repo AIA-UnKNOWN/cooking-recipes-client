@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 import useRecipesServices from "./recipes.services";
 
@@ -9,11 +10,15 @@ const useRecipes = props => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    getAllRecipes();
+    const cancelTokenSource = axios.CancelToken.source();
+    getAllRecipes(cancelTokenSource.token);
+    return () => {
+      cancelTokenSource.cancel();
+    }
   }, []);
 
-  const getAllRecipes = async () => {
-    const recipes = await getAll(user?.id);
+  const getAllRecipes = async (cancelTokenSource) => {
+    const recipes = await getAll(user?.id, cancelTokenSource);
     setRecipes(recipes?.data);
   }
 
