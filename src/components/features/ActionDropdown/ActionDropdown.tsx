@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 
 const RecipeActionDropdown = props => {
+  const {
+    actions,
+  } = props;
   const [isDropdownCollapsed, setIsDropdownCollapsed] = useState(false);
-  const [actions, setActions] = useState([
-    {
-      name: 'Delete',
-      onClick: (e) => console.log('delete'),
-    },
-  ]);
 
   return (
     <div className='relative'>

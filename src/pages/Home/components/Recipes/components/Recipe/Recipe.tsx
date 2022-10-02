@@ -2,9 +2,7 @@ import React from 'react';
 
 import { API_URL } from '@env';
 import { Button } from '@components/elements';
-import {
-  RecipeActionDropdown,
-} from './components';
+import ActionDropdown from '@components/features/ActionDropdown';
 
 const Recipe = props => {
   const {
@@ -23,7 +21,14 @@ const Recipe = props => {
       </div>
       <div className='p-[15px] relative'>
         <div className='absolute right-[15px] top-[15px]'>
-          <RecipeActionDropdown />
+          <ActionDropdown
+            actions={[
+              {
+                name: 'Delete',
+                onClick: e => console.log("delete me")
+              }
+            ]}
+          />
         </div>
         <p className='text-[18px] pb-2 text-center font-bold'>{data.name}</p>
         <p className='text-[14px] pb-4 text-center'>{data.description || 'No description provided'}</p>
