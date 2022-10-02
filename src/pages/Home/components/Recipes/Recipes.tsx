@@ -10,7 +10,7 @@ const Recipes = props => {
 
   return (
     <div className='flex flex-col items-center'>
-      {recipes.map(recipe => (
+      {recipes?.map(recipe => (
         <Recipe
           key={recipe.id}
           data={recipe}
