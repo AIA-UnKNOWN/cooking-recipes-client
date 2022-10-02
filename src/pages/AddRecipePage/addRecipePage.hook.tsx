@@ -1,11 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
+import type { Recipe } from "@reducers/recipes/recipe.types";
 import useAddRecipePageServices from "./addRecipePage.services";
+import { setRecipes } from "@reducers/recipes";
 
 const useAddRecipePage = props => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector(state => state.user.data);
+  const [
+    user,
+    recipes,
+  ] = useSelector(state => [
+    state.user.data,
+    state.recipes.data,
+  ]);
   const { createRecipe } = useAddRecipePageServices();
 
   const goBack = () => {
@@ -22,8 +31,13 @@ const useAddRecipePage = props => {
       const value = getValueByType({ element: inputField, type: inputField.type });
       formData.append(inputField.name, value);
     });
-    createRecipe(formData);
+    const { data } = await createRecipe(formData);
+    appendRecipe(data);
     navigate('/');
+  }
+
+  const appendRecipe = (recipe: Recipe) => {
+    dispatch(setRecipes([...recipes, recipe]));
   }
 
   const getValueByType = ({ element, type }) => {
