@@ -3,11 +3,15 @@ import React from 'react';
 import { API_URL } from '@env';
 import { Button } from '@components/elements';
 import ActionDropdown from '@components/features/ActionDropdown';
+import useRecipe from './recipe.hook';
 
 const Recipe = props => {
   const {
     data,
   } = props;
+  const {
+    deleteRecipeById,
+  } = useRecipe(props);
   
   return (
     <div className='w-[300px] shadow-sm shadow-gray-400 mb-[15px]'>
@@ -25,7 +29,7 @@ const Recipe = props => {
             actions={[
               {
                 name: 'Delete',
-                onClick: e => console.log("delete me")
+                onClick: e => deleteRecipeById(data.id),
               }
             ]}
           />
