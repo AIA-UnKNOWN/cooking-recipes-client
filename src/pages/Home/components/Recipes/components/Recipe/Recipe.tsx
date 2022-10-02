@@ -1,7 +1,10 @@
 import React from 'react';
 
 import { API_URL } from '@env';
- import { Button } from '@components/elements';
+import { Button } from '@components/elements';
+import {
+  RecipeActionDropdown,
+} from './components';
 
 const Recipe = props => {
   const {
@@ -18,7 +21,10 @@ const Recipe = props => {
           <source src={`${API_URL}/${data?.Uploads[0]?.file_path}`} type={data?.Uploads[0]?.type} />
         </video>
       </div>
-      <div className='p-[15px]'>
+      <div className='p-[15px] relative'>
+        <div className='absolute right-[15px] top-[15px]'>
+          <RecipeActionDropdown />
+        </div>
         <p className='text-[18px] pb-2 text-center font-bold'>{data.name}</p>
         <p className='text-[14px] pb-4 text-center'>{data.description || 'No description provided'}</p>
         <div className='flex flex-nowrap justify-between items-center'>
