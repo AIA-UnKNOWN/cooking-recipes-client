@@ -21,7 +21,7 @@ const useAddRecipePage = props => {
     navigate('/');
   }
 
-  const addRecipe = async e => {
+  const onSumbitRecipe = async e => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('userId', user?.id);
@@ -49,10 +49,30 @@ const useAddRecipePage = props => {
     }
   }
 
+  const displayFileOnUpload = async (e) => {
+    const file = e.target.files[0];
+    const mediaFilePattern = /^(video)/i;
+    if (file && mediaFilePattern.test(file.type)) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        const data = fileReader.result;
+        Object.assign(
+          document.getElementById('recipe-video'),
+          {
+            className: 'w-full block',
+            src: data,
+          }
+        );
+      }
+    }
+  }
+
   return {
     /* Functions */
     goBack,
-    addRecipe,
+    onSumbitRecipe,
+    displayFileOnUpload,
   };
 }
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 
 import { Button } from '@components/elements';
 import {
@@ -12,7 +12,8 @@ const AddRecipePage = props => {
   const {
     /* Functions */
     goBack,
-    addRecipe,
+    onSumbitRecipe,
+    displayFileOnUpload,
   } = useAddRecipePage(props);
 
   return (
@@ -24,7 +25,7 @@ const AddRecipePage = props => {
           Back
         </Button>
       </div>
-      <form onSubmit={addRecipe}>
+      <form onSubmit={onSumbitRecipe}>
         <Input
           className='mb-[15px]'
           placeholder="Title"
@@ -45,11 +46,13 @@ const AddRecipePage = props => {
           name='recipe-thumbnail'
           accept="image/*"
         />
+        <video id='recipe-video' className='w-full hidden' controls></video>
         <InputFile
           className='mb-[15px]'
           label="Upload Video"
           name='recipe-video'
           accept="video/*,.mkv"
+          onChange={displayFileOnUpload}
         />
         <Button
           className='w-[100%]'
