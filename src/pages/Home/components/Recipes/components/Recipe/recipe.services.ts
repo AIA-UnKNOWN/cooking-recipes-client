@@ -20,10 +20,8 @@ const useRecipeServices = () => {
 
   const updateRecipe = async (recipeId: number, updatedRecipe: Recipe) : AxiosResponse<any> => {
     try {
-      const response = await axios.put(`${API_URL}/recipe/${recipeId}/update`, {
-        updatedRecipe
-      });
-      return response;
+      const response = await axios.put(`${API_URL}/recipe/${recipeId}/update`, updatedRecipe);
+      return response.data;
     } catch (error) {
       return error.response;
     }

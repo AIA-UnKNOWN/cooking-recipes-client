@@ -54,7 +54,7 @@ const Recipe = props => {
           <Button
             icon={`fa fa-${data.is_favorite ? 'heart' : 'circle'}`}
             className='text-[14px] w-[49%] bg-[#ffffff] text-[#AC80F3] border border-[#AC80F3]'
-            onClick={e => updateRecipeById(data.id, { ...data, is_favorite: !data.is_favorite })}
+            onClick={e => updateRecipeById(data.id, { is_favorite: !data.is_favorite })}
           >
             Favorite
           </Button>

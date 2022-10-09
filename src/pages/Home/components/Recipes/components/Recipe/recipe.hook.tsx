@@ -41,14 +41,14 @@ const useRecipe = props => {
   }
 
   const updateRecipeById = async (id: number, updatedRecipe: Recipe) => {
-    const { response, isUpdated } = await updateRecipe(id, updatedRecipe);
-    isUpdated && updateRecipeRedux(id, updatedRecipe);
+    const { data, isUpdated } = await updateRecipe(id, updatedRecipe);
+    isUpdated && updateRecipeRedux(id, data);
   }
 
   const updateRecipeRedux = (recipeId: number, updatedRecipe: Recipe) => {
     dispatch(
       setRecipes(
-        recipes?.map((recipe: Recipe) => recipe.id === recipeId ? updatedRecipe : recipe)
+        recipes?.map((recipe: Recipe) => recipe.id === recipeId ? { ...recipe, ...updatedRecipe} : recipe)
       )
     );
   }
