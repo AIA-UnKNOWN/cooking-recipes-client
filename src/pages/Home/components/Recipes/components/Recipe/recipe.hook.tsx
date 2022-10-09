@@ -26,8 +26,23 @@ const useRecipe = props => {
     );
   }
 
+  const downloadRecipeVideo = ({ url, type, fileName }) => {
+    const dataBlob = new Blob([url], { type });
+    const href = URL.createObjectURL(dataBlob);
+    const a = Object.assign(document.createElement('a'), {
+      href,
+      style: 'display: none',
+      download: fileName.replace(/ /g, '_'),
+    });
+    document.body.appendChild(a);
+    a.click();
+    URL.revokeObjectURL(href);
+    a.remove();
+  }
+
   return {
     deleteRecipeById,
+    downloadRecipeVideo,
   }
 }
 
