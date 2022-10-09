@@ -7,7 +7,7 @@ import useRecipe from './recipe.hook';
 
 const Recipe = props => {
   const {
-    data,
+    data: recipe,
   } = props;
   const {
     deleteRecipeById,
@@ -16,8 +16,8 @@ const Recipe = props => {
   } = useRecipe(props);
 
   const video = {
-    source: `${API_URL}/${data?.Uploads[0]?.file_path}`,
-    type: data?.Uploads[0]?.type,
+    source: `${API_URL}/${recipe?.Uploads[0]?.file_path}`,
+    type: recipe?.Uploads[0]?.type,
   }
   
   return (
@@ -36,25 +36,25 @@ const Recipe = props => {
             actions={[
               {
                 name: 'Delete',
-                onClick: e => deleteRecipeById(data.id),
+                onClick: e => deleteRecipeById(recipe.id),
               }
             ]}
           />
         </div>
-        <p className='text-[18px] pb-2 text-center font-bold'>{data.name}</p>
-        <p className='text-[14px] pb-4 text-center'>{data.description || 'No description provided'}</p>
+        <p className='text-[18px] pb-2 text-center font-bold'>{recipe.name}</p>
+        <p className='text-[14px] pb-4 text-center'>{recipe.description || 'No description provided'}</p>
         <div className='flex flex-nowrap justify-between items-center'>
           <Button
             icon="fa fa-cloud-download"
             className='text-[14px] w-[49%]'
-            onClick={e => downloadRecipeVideo({ url: video.source, type: video.type, fileName: data.name })}
+            onClick={e => downloadRecipeVideo({ url: video.source, type: video.type, fileName: recipe.name })}
           >
             Download
           </Button>
           <Button
-            icon={`fa fa-${data.is_favorite ? 'heart' : 'circle'}`}
+            icon={`fa fa-${recipe.is_favorite ? 'heart' : 'circle'}`}
             className='text-[14px] w-[49%] bg-[#ffffff] text-[#AC80F3] border border-[#AC80F3]'
-            onClick={e => updateRecipeById(data.id, { is_favorite: !data.is_favorite })}
+            onClick={e => updateRecipeById(recipe.id, { is_favorite: !recipe.is_favorite })}
           >
             Favorite
           </Button>

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
+import Swal from 'sweetalert2';
 
 import { setRecipes } from "@reducers/recipes";
 import useRecipeServices from "./recipe.services";
@@ -15,7 +16,23 @@ const useRecipe = props => {
 
   const deleteRecipeById = async (recipeId: number) => {
     const response = await deleteRecipe(recipeId);
-    response.data === 1 && removeRecipeFromRedux(recipeId);
+    const deleteConfirmationPopup = await Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    });
+    if (deleteConfirmationPopup.isConfirmed) {
+      response.data === 1 && removeRecipeFromRedux(recipeId);
+      Swal.fire(
+        'Deleted!',
+        'Recipe has been deleted.',
+        'success'
+      );
+    }
   }
 
   const removeRecipeFromRedux = (recipeId: number) => {
