@@ -12,6 +12,7 @@ const Recipe = props => {
   const {
     deleteRecipeById,
     downloadRecipeVideo,
+    updateRecipeById,
   } = useRecipe(props);
 
   const video = {
@@ -51,8 +52,9 @@ const Recipe = props => {
             Download
           </Button>
           <Button
-            icon="fa fa-heart"
+            icon={`fa fa-${data.is_favorite ? 'heart' : 'circle'}`}
             className='text-[14px] w-[49%] bg-[#ffffff] text-[#AC80F3] border border-[#AC80F3]'
+            onClick={e => updateRecipeById(data.id, { ...data, is_favorite: !data.is_favorite })}
           >
             Favorite
           </Button>

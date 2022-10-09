@@ -3,6 +3,9 @@ import axios, {
 } from 'axios';
 
 import { API_URL } from '@env';
+import type {
+  Recipe
+} from '@reducers/recipes/recipe.types';
 
 const useRecipeServices = () => {
   
@@ -15,8 +18,20 @@ const useRecipeServices = () => {
     }
   }
 
+  const updateRecipe = async (recipeId: number, updatedRecipe: Recipe) : AxiosResponse<any> => {
+    try {
+      const response = await axios.put(`${API_URL}/recipe/${recipeId}/update`, {
+        updatedRecipe
+      });
+      return response;
+    } catch (error) {
+      return error.response;
+    }
+  }
+
   return {
     deleteRecipe,
+    updateRecipe,
   }
 }
 

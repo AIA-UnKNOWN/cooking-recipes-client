@@ -11,7 +11,7 @@ const useRecipe = props => {
   ] = useSelector(state => [
     state.recipes.data,
   ]);
-  const { deleteRecipe } = useRecipeServices();
+  const { deleteRecipe, updateRecipe } = useRecipeServices();
 
   const deleteRecipeById = async (recipeId: number) => {
     const response = await deleteRecipe(recipeId);
@@ -40,9 +40,23 @@ const useRecipe = props => {
     a.remove();
   }
 
+  const updateRecipeById = async (id: number, updatedRecipe: Recipe) => {
+    const { response, isUpdated } = await updateRecipe(id, updatedRecipe);
+    isUpdated && updateRecipeRedux(id, updatedRecipe);
+  }
+
+  const updateRecipeRedux = (recipeId: number, updatedRecipe: Recipe) => {
+    dispatch(
+      setRecipes(
+        recipes?.map((recipe: Recipe) => recipe.id === recipeId ? updatedRecipe : recipe)
+      )
+    );
+  }
+
   return {
     deleteRecipeById,
     downloadRecipeVideo,
+    updateRecipeById,
   }
 }
 
