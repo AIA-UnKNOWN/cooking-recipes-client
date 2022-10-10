@@ -40,11 +40,13 @@ const AddRecipePage = props => {
           placeholder="Description"
           name="description"
         ></textarea>
+        <img id='recipe-thumbnail' className='w-full hidden' />
         <InputFile
           className='mb-[15px]'
           label="Upload Thumbnail"
           name='recipe-thumbnail'
           accept="image/*"
+          onChange={displayFileOnUpload}
         />
         <video id='recipe-video' className='w-full hidden' controls></video>
         <InputFile
