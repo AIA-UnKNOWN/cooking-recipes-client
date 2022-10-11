@@ -15,8 +15,14 @@ const Home = props => {
       <Header />
       <div className='flex justify-center items-center py-[25px]'>
         <Button
-          icon="fa fa-plus"
+          icon={
+            <img
+              className='scale-75'
+              src="https://img.icons8.com/external-tanah-basah-detailed-outline-tanah-basah/48/ffffff/external-plus-user-interface-tanah-basah-detailed-outline-tanah-basah-2.png"
+            />
+          }
           onClick={onClickAddRecipe}
+          className="w-fit pr-3"
         >
           Add recipe
         </Button>        

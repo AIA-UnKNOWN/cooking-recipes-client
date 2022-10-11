@@ -45,14 +45,24 @@ const Recipe = props => {
         <p className='text-[14px] pb-4 text-center'>{recipe.description || 'No description provided'}</p>
         <div className='flex flex-nowrap justify-between items-center'>
           <Button
-            icon="fa fa-cloud-download"
+            icon={
+              <img
+                className="scale-75"
+                src="https://img.icons8.com/external-anggara-glyph-anggara-putra/32/ffffff/external-download-media-anggara-glyph-anggara-putra-2.png"
+              />
+            }
             className='text-[14px] w-[49%]'
             onClick={e => downloadRecipeVideo({ url: video.source, type: video.type, fileName: recipe.name })}
           >
             Download
           </Button>
           <Button
-            icon={`fa fa-${recipe.is_favorite ? 'heart' : 'circle'}`}
+            icon={
+              <img
+                className="scale-75"
+                src={`https://img.icons8.com/material-${recipe.is_favorite ? 'rounded' : 'outlined'}/24/AC80F3/like--v1.png`}
+              />
+            }
             className='text-[14px] w-[49%] bg-[#ffffff] text-[#AC80F3] border border-[#AC80F3]'
             onClick={e => updateRecipeById(recipe.id, { is_favorite: !recipe.is_favorite })}
           >
