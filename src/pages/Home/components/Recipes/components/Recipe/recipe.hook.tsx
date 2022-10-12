@@ -17,7 +17,6 @@ const useRecipe = props => {
   const [isPlayVideo, setIsPlayVideo] = useState(false);
 
   const deleteRecipeById = async (recipeId: number) => {
-    const response = await deleteRecipe(recipeId);
     const deleteConfirmationPopup = await Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -28,6 +27,7 @@ const useRecipe = props => {
       confirmButtonText: 'Yes, delete it!'
     });
     if (deleteConfirmationPopup.isConfirmed) {
+      const response = deleteRecipe(recipeId);
       response.data === 1 && removeRecipeFromRedux(recipeId);
       Swal.fire(
         'Deleted!',
