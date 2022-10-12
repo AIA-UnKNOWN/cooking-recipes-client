@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import Swal from 'sweetalert2';
 
@@ -13,6 +14,7 @@ const useRecipe = props => {
     state.recipes.data,
   ]);
   const { deleteRecipe, updateRecipe } = useRecipeServices();
+  const [isPlayVideo, setIsPlayVideo] = useState(false);
 
   const deleteRecipeById = async (recipeId: number) => {
     const response = await deleteRecipe(recipeId);
@@ -71,6 +73,9 @@ const useRecipe = props => {
   }
 
   return {
+    /* States */
+    isPlayVideo, setIsPlayVideo,
+    /* Functions */
     deleteRecipeById,
     downloadRecipeVideo,
     updateRecipeById,

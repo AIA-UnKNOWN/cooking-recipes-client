@@ -10,25 +10,43 @@ const Recipe = props => {
     data: recipe,
   } = props;
   const {
+    /* States */
+    isPlayVideo, setIsPlayVideo,
+    /* Functions */
     deleteRecipeById,
     downloadRecipeVideo,
     updateRecipeById,
   } = useRecipe(props);
 
+  const thumbnail = recipe?.Uploads?.find(file => file.type.split('/')[0] === 'image');
   const video = {
     source: `${API_URL}/${recipe?.Uploads[0]?.file_path}`,
     type: recipe?.Uploads[0]?.type,
   }
-  
+
   return (
     <div className='w-[300px] shadow-sm shadow-gray-400 mb-[15px]'>
-      <div>
-        <video
-          className='w-full'
-          controls
-        >
-          <source src={video.source} type={video.type} />
-        </video>
+      <div className='relative'>
+        {thumbnail && !isPlayVideo ? (
+          <>
+            <img
+              src={`${API_URL}/${thumbnail.file_path}`}
+              alt={recipe.name}
+            />
+            <button
+              className='absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] scale-150'
+              onClick={() => setIsPlayVideo(!isPlayVideo)}
+            >
+              <img src="https://img.icons8.com/ios-glyphs/30/AC80F3/play-button-circled--v1.png"/>
+            </button>
+          </>
+        ) : (
+          <>
+            <video className='w-full' controls autoPlay={isPlayVideo}>
+              <source src={video.source} type={video.type} />
+            </video>
+          </>
+        )}
       </div>
       <div className='p-[15px] relative'>
         <div className='absolute right-[15px] top-[15px]'>
