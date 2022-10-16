@@ -4,10 +4,16 @@ import useHome from './home.hook';
 import { Button } from '@components/elements';
 import Header from '@components/layouts/Header';
 import Recipes from './components/Recipes';
+import Pagination from '@components/features/Pagination';
 
 const Home = props => {
   const {
+    // States
+    paginationMeta,
+    // Functions
+    setPaginationMeta,
     onClickAddRecipe,
+    getAllRecipesWithPagination,
   } = useHome();
 
   return (
@@ -27,7 +33,14 @@ const Home = props => {
           Add recipe
         </Button>        
       </div>
-      <Recipes />
+      <Recipes setPagination={setPaginationMeta} />
+      <div className='flex justify-center items-center py-2'>
+        <Pagination
+          meta={paginationMeta}
+          onPrev={getAllRecipesWithPagination}
+          onNext={getAllRecipesWithPagination}
+        />
+      </div>
     </div>
   );
 }
