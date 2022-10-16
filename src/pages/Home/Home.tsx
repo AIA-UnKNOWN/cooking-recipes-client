@@ -28,7 +28,7 @@ const Home = props => {
             />
           }
           onClick={onClickAddRecipe}
-          className="w-fit pr-3"
+          className="pr-3 w-[150px]"
         >
           Add recipe
         </Button>        
