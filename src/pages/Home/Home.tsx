@@ -41,8 +41,8 @@ const Home = props => {
       <div className='flex justify-center items-center py-2'>
         <Pagination
           meta={paginationMeta}
-          onPrev={getAllRecipesWithPagination}
-          onNext={getAllRecipesWithPagination}
+          onPrev={meta => getAllRecipesWithPagination({}, meta)}
+          onNext={meta => getAllRecipesWithPagination({}, meta)}
         />
       </div>
     </div>
