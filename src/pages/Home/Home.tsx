@@ -18,7 +18,11 @@ const Home = props => {
 
   return (
     <div>
-      <Header />
+      <Header
+        onChangeSearch={value => getAllRecipesWithPagination({
+          searchKey: value,
+        }, paginationMeta)}
+      />
       <div className='flex justify-center items-center py-[25px]'>
         <Button
           icon={

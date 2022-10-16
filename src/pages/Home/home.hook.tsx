@@ -20,8 +20,7 @@ const useHome = () => {
     navigate('/recipe/add');
   }
 
-  const getAllRecipesWithPagination = async meta => {
-    console.log('getAllRecipesWithpagination', meta)
+  const getAllRecipesWithPagination = async (data = {}, meta) => {
     const recipes = await getAll({
       userId: user?.id,
       data: {
@@ -29,6 +28,7 @@ const useHome = () => {
           offset: meta?.offset || undefined,
           limit: 10,
         },
+        ...data,
       },
     });
     setPaginationMeta?.(recipes?.meta || {});
