@@ -6,6 +6,9 @@ import { setRecipes } from "@reducers/recipes";
 import useRecipesServices from "./recipes.services";
 
 const useRecipes = props => {
+  const {
+    setPagination,
+  } = props;
   const dispatch = useDispatch();
   const [
     user,
@@ -25,7 +28,16 @@ const useRecipes = props => {
   }, []);
 
   const getAllRecipes = async (cancelTokenSource) => {
-    const recipes = await getAll(user?.id, cancelTokenSource);
+    const recipes = await getAll({
+      userId: user?.id,
+      data: {
+        pagination: {
+          limit: 10,
+        }
+      },
+      cancelTokenSource,
+    });
+    setPagination?.(recipes?.meta || {});
     dispatch(setRecipes(recipes?.data));
   }
 
@@ -34,6 +46,8 @@ const useRecipes = props => {
      * States
      */
     recipes,
+    /* Functions */
+    
   };
 }
 

@@ -6,7 +6,7 @@ import useRecipes from './recipes.hook';
 const Recipes = props => {
   const {
     recipes,
-  } = useRecipes();
+  } = useRecipes(props);
 
   return (
     <div className='flex flex-col items-center'>
