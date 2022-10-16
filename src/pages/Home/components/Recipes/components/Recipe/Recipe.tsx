@@ -18,11 +18,9 @@ const Recipe = props => {
     updateRecipeById,
   } = useRecipe(props);
 
-  const thumbnail = recipe?.Uploads?.find(file => file.type.split('/')[0] === 'image');
-  const video = {
-    source: `${API_URL}/${recipe?.Uploads[0]?.file_path}`,
-    type: recipe?.Uploads[0]?.type,
-  }
+  const thumbnail = recipe?.Uploads?.find(file => file.type.split('/')[0] === 'image') || {};
+  const videoSource = recipe?.Uploads?.find(file => file.type.split('/')[0] === 'video')?.file_path || null;
+  const videoType = recipe?.Uploads?.find(file => file.type.split('/')[0] === 'video')?.type || null;
 
   return (
     <div className='w-[300px] shadow-sm shadow-gray-400 mb-[15px]'>
@@ -43,7 +41,7 @@ const Recipe = props => {
         ) : (
           <>
             <video className='w-full' controls autoPlay={isPlayVideo}>
-              <source src={video.source} type={video.type} />
+              <source src={videoSource ? `${API_URL}/${videoSource}` : ''} type={videoType} />
             </video>
           </>
         )}
@@ -70,7 +68,7 @@ const Recipe = props => {
               />
             }
             className='text-[14px] w-[49%]'
-            onClick={e => downloadRecipeVideo({ url: video.source, type: video.type, fileName: recipe.name })}
+            onClick={e => downloadRecipeVideo({ url: `${API_URL}/${videoSource}` || '', type: videoType, fileName: recipe.name })}
           >
             Download
           </Button>
