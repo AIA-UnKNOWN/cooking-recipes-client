@@ -27,7 +27,7 @@ const useRecipe = props => {
       confirmButtonText: 'Yes, delete it!'
     });
     if (deleteConfirmationPopup.isConfirmed) {
-      const response = deleteRecipe(recipeId);
+      const response = await deleteRecipe(recipeId);
       response.data === 1 && removeRecipeFromRedux(recipeId);
       Swal.fire(
         'Deleted!',
