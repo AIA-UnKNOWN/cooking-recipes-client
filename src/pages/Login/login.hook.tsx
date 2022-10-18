@@ -66,6 +66,10 @@ const useLogin = () => {
       [inputElement.name]: inputElement.value,
     }));
   }
+
+  const goToSignupPage = () => {
+    navigate('/signup');
+  }
   
   return {
     /* States */
@@ -73,6 +77,7 @@ const useLogin = () => {
     /* Functions */
     loginUser,
     handleInputChange,
+    goToSignupPage,
   }
 }
 

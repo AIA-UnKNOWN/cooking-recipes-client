@@ -11,6 +11,7 @@ const LoginPage = () => {
     /* Functions */
     loginUser,
     handleInputChange,
+    goToSignupPage,
   } = useLogin();
 
   return (
@@ -52,6 +53,9 @@ const LoginPage = () => {
           >
             Login
           </button>
+          <p className='text-[12px] mt-3 text-center'>
+            Don't have an account? <button className='text-[#4C6EE4]' onClick={goToSignupPage}>Signup here</button>
+          </p>
         </div>
       </form>
     </div>
