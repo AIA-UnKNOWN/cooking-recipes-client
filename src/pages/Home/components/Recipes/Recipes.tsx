@@ -9,7 +9,7 @@ const Recipes = props => {
   } = useRecipes(props);
 
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col lg:flex-row lg:justify-evenly lg:flex-wrap items-center'>
       {recipes?.length > 0 ?
         recipes?.map(recipe => (
           <Recipe

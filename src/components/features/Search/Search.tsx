@@ -28,7 +28,7 @@ const Search = props => {
 
   return (
     <Input
-      className="w-[280px] h-[40px]"
+      className="w-[280px] lg:w-[500px] h-[40px]"
       name="search"
       placeholder="Search"
       onChange={changeHandler}

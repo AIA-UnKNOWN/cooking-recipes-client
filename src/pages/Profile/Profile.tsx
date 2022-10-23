@@ -10,6 +10,7 @@ import {
   Input,
 } from '@components/form/components';
 import { setUser } from '@reducers/user';
+import { Wrapper } from '@components/layouts';
 
 const Profile = props => {
   const dispatch = useDispatch();
@@ -44,46 +45,48 @@ const Profile = props => {
 
   return (
     <div className='p-4'>
-      <div className='mb-[22px] flex justify-end'>
-        <Button
-          onClick={goBack}
-        >
-          Back
-        </Button>
-      </div>
-      <div>
-        <div className='mb-[15px]'>
-          <label className='text-center block mb-2'>
-            Email
-          </label>
-          <Input
-            className='text-center'
-            placeholder="Email"
-            name="email"
-            onChange={() => null}
-            value={user?.email || 'anonymous'}
-          />
+      <Wrapper>
+        <div className='mb-[22px] lg:mb-[30px] flex justify-end'>
+          <Button
+            onClick={goBack}
+          >
+            Back
+          </Button>
         </div>
-        <div className='mb-[15px]'>
-          <label className='text-center block mb-2'>
-            Username
-          </label>
-          <Input
-            className='text-center'
-            placeholder="Username"
-            name="username"
-            onChange={() => null}
-            value={user?.username || 'anonymous'}
-          />
+        <div className='lg:w-[500px] mx-auto'>
+          <div className='mb-[15px]'>
+            <label className='text-center block mb-2'>
+              Email
+            </label>
+            <Input
+              className='text-center'
+              placeholder="Email"
+              name="email"
+              onChange={() => null}
+              value={user?.email || 'anonymous'}
+            />
+          </div>
+          <div className='mb-[15px]'>
+            <label className='text-center block mb-2'>
+              Username
+            </label>
+            <Input
+              className='text-center'
+              placeholder="Username"
+              name="username"
+              onChange={() => null}
+              value={user?.username || 'anonymous'}
+            />
+          </div>
         </div>
-      </div>
-      <div className='mb-[22px] flex justify-center'>
-        <Button
-          onClick={logout}
-        >
-          Logout
-        </Button>
-      </div>
+        <div className='mb-[22px] lg:mt-[30px] flex justify-center'>
+          <Button
+            onClick={logout}
+          >
+            Logout
+          </Button>
+        </div>
+      </Wrapper>
     </div>
   )
 }
